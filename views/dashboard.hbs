@@ -1,12 +1,3 @@
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">{{msg}}</h1>
@@ -24,10 +15,10 @@
             aria-controls="addPatient" data-toggle="modal" data-target="#add-modal">
             Add patient
           </a>
-          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#searchPatient"
-            aria-expanded="false" aria-controls="searchPatient">
+          <a class="btn btn-primary" data-toggle="collapse" href="#addPatient" role="button" aria-expanded="false"
+            aria-controls="addPatient" data-toggle="modal" data-target="#search-modal">
             Search patient
-          </button>
+          </a>
         </p>
 
         {{!-- This is our ADD PATIENT modal --}}
@@ -128,81 +119,78 @@
 
 
 
+        {{!-- This is our SEARCH modal --}}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        {{!-- <div class="collapse" id="addPatient">
-          <div class="card card-body">
-            <h3>Add patient information</h3>
-            <form class="clearfix mb-4" action="POST">
-              <div class="form-group">
-                <label for="example-text">Full Name</label>
-                <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
-                  placeholder="Enter Full Name">
+        <div class="modal" tabindex="-1" role="dialog" id="search-modal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Search for a Patient</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-              <div class="form-group">
-                <label for="example-description">Condition Description</label>
-                <textarea class="form-control" id="example-description" aria-describedby="example-description"
-                  placeholder="Enter Condition Description"></textarea>
+              <div class="modal-body">
+
+
+                {{!-- this is the js library search bar --}}
+                <div class="container">
+
+                  <style>
+                    @media (max-width:500px) {
+                      .github-corner:hover .octo-arm {
+                        animation: none
+                      }
+
+                      .github-corner .octo-arm {
+                        animation: octocat-wave 560ms ease-in-out
+                      }
+                    }
+                  </style>
+
+                  <div class="body" align="center">
+                    <input id="autoComplete" type="text" tabindex="1" placeholder="Patient Name">
+
+                    <div class="selection"></div>
+                  </div>
+
+                </div>
+                {{!-- end js library search bar  --}}
+
+
+
+
               </div>
-              <button id="add" class="btn btn-primary float-right">Add</button>
-            </form>
+            </div>
           </div>
-        </div> --}}
+        </div>
 
-        {{!-- <div class="collapse" id="searchPatient">
-          <div class="card card-body">
-            <h3>Search patient information</h3>
-            <form class="clearfix mb-4" action="POST">
-              <div class="form-group">
-                <label for="example-text">Full Name</label>
-                <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
-                  placeholder="Enter Full Name">
+        {{!-- This is our PATIENT INFO modal --}}
+
+        <div class="modal" tabindex="-1" role="dialog" id="info-modal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Patient Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
-              <button id="search" class="btn btn-primary float-right">Search</button>
-            </form>
+              <div class="modal-body">
+
+
+                <p>Modal body w/ patient info</p>
+
+
+
+              </div>
+            </div>
           </div>
-        </div> --}}
-
-        {{!-- <h3>All patient information</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul> --}}
-      </div>
-    </div>
-  </div>
-</div>
+        </div>
 
 
-
-<form id="logout" name="logout" method="get" action="/logout">
-  <button class="btn-lg btn-info mx-5" type="submit">
-    Logout
-  </button>
-</form>
-{{!-- 
-<script type="text/javascript">
-
-  $("#close-modal").modal('hide');
-
-</script> --}}
+        <form id="logout" name="logout" method="get" action="/logout">
+          <button class="btn-lg btn-info mx-5" type="submit">
+            Logout
+          </button>
+        </form>
