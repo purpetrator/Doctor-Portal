@@ -36,6 +36,20 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
+    phone: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
+    },
     street: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -63,6 +77,20 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1]
       }
+    },
+    drid: {
+      type: DataTypes.INTEGER,
+      validate: {
+        len: [1]
+      }
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal("CURRENT_TIMESTAMP()")
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      defaultValue: sequelize.literal("CURRENT_TIMESTAMP()")
     }
   });
   return Patient;

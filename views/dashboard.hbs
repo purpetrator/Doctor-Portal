@@ -2,6 +2,10 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+  integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+  integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
@@ -13,20 +17,136 @@
 <div id="home">
   <div class="container">
     <div class="row">
-      <div class="col-8 offset-2">
+      <div class="col-8 offset-2 m-5 b-5 p-5">
 
         <p>
           <a class="btn btn-primary" data-toggle="collapse" href="#addPatient" role="button" aria-expanded="false"
-            aria-controls="addPatient">
-            Add patient information
+            aria-controls="addPatient" data-toggle="modal" data-target="#add-modal">
+            Add patient
           </a>
           <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#searchPatient"
             aria-expanded="false" aria-controls="searchPatient">
-            Search patient information
+            Search patient
           </button>
         </p>
 
-        <div class="collapse" id="addPatient">
+        {{!-- This is our ADD PATIENT modal --}}
+
+        <div class="modal fade" id="add-modal" tabindex="-1" role="dialog" aria-labelledby="surveyModalTitle"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h3 class="modal-title text-info" id="surveyModalTitle">
+                  Add a New Patient
+                </h3>
+                {{!-- This is the close button --}}
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close-modal">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                {{!-- THE FORM STARTS HERE --}}
+
+                <form class="clearfix mb-4" action="POST">
+                  <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" class="form-control" aria-describedby="first-name"
+                      placeholder="Enter First Name">
+                  </div>
+                  <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" class="form-control" id="last-name" aria-describedby="last-name"
+                      placeholder="Enter Last Name">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pt-dob">Date of Birth</label>
+                    <input type="text" class="form-control" id="pt-dob" aria-describedby="pt-dob"
+                      placeholder="01/01/1900">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pt-weight">Weight (lbs)</label>
+                    <input type="text" class="form-control" id="pt-weight" aria-describedby="pt-weight"
+                      placeholder="150">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pt-height">Height (in)</label>
+                    <input type="text" class="form-control" id="pt-height" aria-describedby="pt-height"
+                      placeholder="68">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pt-street">Email</label>
+                    <input type="text" class="form-control" id="pt-email" aria-describedby="pt-street"
+                      placeholder="patient@info.com">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pt-street">Phone Number</label>
+                    <input type="text" class="form-control" id="pt-phone" aria-describedby="pt-street"
+                      placeholder="111-111-1111">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pt-street">Street Address</label>
+                    <input type="text" class="form-control" id="pt-street" aria-describedby="pt-street"
+                      placeholder="123 Happy Street">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pt-city">City</label>
+                    <input type="text" class="form-control" id="pt-city" aria-describedby="pt-city"
+                      placeholder="Philadelphia">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pt-state">State</label>
+                    <input type="text" class="form-control" id="pt-state" aria-describedby="pt-state" placeholder="PA">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pt-zip">Zip Code</label>
+                    <input type="text" class="form-control" id="pt-zip" aria-describedby="pt-zip" placeholder="19125">
+                  </div>
+
+
+                  <button id="submit" class="btn btn-primary float-right">Submit</button>
+                </form>
+
+                {{!-- THE FORM ENDS HERE --}}
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        {{!-- <div class="collapse" id="addPatient">
           <div class="card card-body">
             <h3>Add patient information</h3>
             <form class="clearfix mb-4" action="POST">
@@ -43,9 +163,9 @@
               <button id="add" class="btn btn-primary float-right">Add</button>
             </form>
           </div>
-        </div>
+        </div> --}}
 
-        <div class="collapse" id="searchPatient">
+        {{!-- <div class="collapse" id="searchPatient">
           <div class="card card-body">
             <h3>Search patient information</h3>
             <form class="clearfix mb-4" action="POST">
@@ -57,9 +177,9 @@
               <button id="search" class="btn btn-primary float-right">Search</button>
             </form>
           </div>
-        </div>
+        </div> --}}
 
-        <h3>All patient information</h3>
+        {{!-- <h3>All patient information</h3>
         <ul id="example-list" class="list-group">
           {{#each examples}}
           <li data-id="{{this.id}}" class="list-group-item">
@@ -67,16 +187,22 @@
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}
-        </ul>
+        </ul> --}}
       </div>
-    </div> 
+    </div>
   </div>
 </div>
 
 
 
 <form id="logout" name="logout" method="get" action="/logout">
-<button class="btn-lg btn-info mx-5" type="submit">
+  <button class="btn-lg btn-info mx-5" type="submit">
     Logout
-</button>
+  </button>
 </form>
+{{!-- 
+<script type="text/javascript">
+
+  $("#close-modal").modal('hide');
+
+</script> --}}
