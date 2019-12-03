@@ -92,6 +92,7 @@ var handleFormSubmit = function(event) {
     refreshPatients();
   });
 
+  //Resets fields to blanks
   $firstName.val("");
   $lastName.val("");
   $dob.val("");
