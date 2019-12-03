@@ -4,6 +4,8 @@ var $lastName = $("#last-name");
 var $dob = $("#pt-dob");
 var $weight = $("#pt-weight");
 var $height = $("#pt-height");
+var $phone = $("#pt-phone");
+var $email = $("#pt-email");
 var $street = $("#pt-street");
 var $city = $("#pt-city");
 var $state = $("#pt-state");
@@ -38,33 +40,33 @@ var API = {
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshPatients = function() {
-  API.getPatients().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
+// var refreshPatients = function() {
+//   API.getPatients().then(function(data) {
+//     var $examples = data.map(function(example) {
+//       var $a = $("<a>")
+//         .text(example.text)
+//         .attr("href", "/example/" + example.id);
 
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
+//       var $li = $("<li>")
+//         .attr({
+//           class: "list-group-item",
+//           "data-id": example.id
+//         })
+//         .append($a);
 
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
+//       var $button = $("<button>")
+//         .addClass("btn btn-danger float-right delete")
+//         .text("ｘ");
 
-      $li.append($button);
+//       $li.append($button);
 
-      return $li;
-    });
+//       return $li;
+//     });
 
-    $exampleList.empty();
-    $exampleList.append($examples);
-  });
-};
+//   $exampleList.empty();
+//   $exampleList.append($examples);
+// });
+// };
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
@@ -77,11 +79,15 @@ var handleFormSubmit = function(event) {
     dob: $dob.val().trim(),
     weight: $weight.val().trim(),
     height: $height.val().trim(),
+    email: $email.val().trim(),
+    phone: $phone.val().trim(),
     street: $street.val().trim(),
     city: $city.val().trim(),
     state: $state.val().trim(),
     zip: $zip.val().trim()
   };
+
+  console.log(patient);
 
   if (!(patient.firstname && patient.lastname)) {
     alert("You must enter a first and last name");
@@ -89,7 +95,7 @@ var handleFormSubmit = function(event) {
   }
 
   API.savePatient(patient).then(function() {
-    refreshPatients();
+    // refreshPatients();
   });
 
   //Resets fields to blanks
