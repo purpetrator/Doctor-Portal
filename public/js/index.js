@@ -1,38 +1,45 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#add");
-var $exampleList = $("#example-list");
+var $firstName = $("#first-name");
+var $lastName = $("#last-name");
+var $dob = $("#pt-dob");
+var $weight = $("#pt-weight");
+var $height = $("#pt-height");
+var $street = $("#pt-street");
+var $city = $("#pt-city");
+var $state = $("#pt-state");
+var $zip = $("#pt-zip");
+var $submitBtn = $("#submit");
+// var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function(example) {
+  savePatient: function(patient) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
+      url: "api/patients",
+      data: JSON.stringify(patient)
     });
   },
-  getExamples: function() {
+  getPatients: function() {
     return $.ajax({
-      url: "api/examples",
+      url: "api/patients",
       type: "GET"
     });
   },
-  deleteExample: function(id) {
+  deletePatient: function(id) {
     return $.ajax({
-      url: "api/examples/" + id,
+      url: "api/patients/" + id,
       type: "DELETE"
     });
   }
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
+var refreshPatients = function() {
+  API.getPatients().then(function(data) {
     var $examples = data.map(function(example) {
       var $a = $("<a>")
         .text(example.text)
@@ -64,24 +71,38 @@ var refreshExamples = function() {
 var handleFormSubmit = function(event) {
   event.preventDefault();
 
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+  var patient = {
+    firstname: $firstName.val().trim(),
+    lastname: $lastName.val().trim(),
+    dob: $dob.val().trim(),
+    weight: $weight.val().trim(),
+    height: $height.val().trim(),
+    street: $street.val().trim(),
+    city: $city.val().trim(),
+    state: $state.val().trim(),
+    zip: $zip.val().trim()
   };
 
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
+  if (!(patient.firstname && patient.lastname)) {
+    alert("You must enter a first and last name");
     return;
   }
 
-  API.saveExample(example).then(function() {
-    refreshExamples();
+  API.savePatient(patient).then(function() {
+    refreshPatients();
   });
 
-  $exampleText.val("");
-  $exampleDescription.val("");
+  //Resets fields to blanks
+  $firstName.val("");
+  $lastName.val("");
+  $dob.val("");
+  $weight.val("");
+  $height.val("");
+  $street.val("");
+  $city.val("");
+  $state.val("");
+  $zip.val("");
 };
-
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
 var handleDeleteBtnClick = function() {
@@ -96,4 +117,4 @@ var handleDeleteBtnClick = function() {
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+// $patientList.on("click", ".delete", handleDeleteBtnClick);

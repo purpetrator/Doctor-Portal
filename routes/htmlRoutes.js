@@ -2,22 +2,22 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Load index page
-  app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+  app.get("/index", function(req, res) {
+    db.Patient.findAll({}).then(function(dbPatients) {
       res.render("index", {
-        msg: "Welcome! Dr.'Surname Here'",
-        examples: dbExamples
+        msg: "Welcome!",
+        patients: dbPatients
       });
     });
   });
 
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(
-      dbExample
+  app.get("/patients/:id", function(req, res) {
+    db.Patient.findOne({ where: { id: req.params.id } }).then(function(
+      dbPatient
     ) {
       res.render("example", {
-        example: dbExample
+        patient: dbPatient
       });
     });
   });

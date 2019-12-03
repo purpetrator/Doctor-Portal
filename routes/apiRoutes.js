@@ -2,25 +2,25 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+  app.get("/api/patients", function(req, res) {
+    db.Patient.findAll({}).then(function(dbPatients) {
+      res.json(dbPatients);
     });
   });
 
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
+  // Create a new Patient
+  app.post("/api/patients", function(req, res) {
+    db.Patient.create(req.body).then(function(dbPatient) {
+      res.json(dbPatient);
     });
   });
 
-  // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(
-      dbExample
+  // Delete an Patient by id
+  app.delete("/api/patients/:id", function(req, res) {
+    db.Patient.destroy({ where: { id: req.params.id } }).then(function(
+      dbPatient
     ) {
-      res.json(dbExample);
+      res.json(dbPatient);
     });
   });
 };

@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">{{msg}}</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
+
+<div id="home">
+  <div class="container">
+    <div class="row">
+      <div class="col-8 offset-2">
+        <h1>{{msg}}</h1>
+        <h2>This is our Home Page!</h2>
+        <form class="clearfix mb-4" action="POST">
+          <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text" id="first-name" class="form-control" aria-describedby="first-name"
+              placeholder="Enter First Name">
+          </div>
+          <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text" class="form-control" id="last-name" aria-describedby="last-name"
+              placeholder="Enter Last Name">
+          </div>
+
+          <div class="form-group">
+            <label for="pt-dob">Date of Birth</label>
+            <input type="text" class="form-control" id="pt-dob" aria-describedby="pt-dob" placeholder="01/01/1900">
+          </div>
+
+          <div class="form-group">
+            <label for="pt-weight">Weight (lbs)</label>
+            <input type="text" class="form-control" id="pt-weight" aria-describedby="pt-weight" placeholder="150">
+          </div>
+
+          <div class="form-group">
+            <label for="pt-height">Height (in)</label>
+            <input type="text" class="form-control" id="pt-height" aria-describedby="pt-height" placeholder="68">
+          </div>
+
+          <div class="form-group">
+            <label for="pt-street">Street Address</label>
+            <input type="text" class="form-control" id="pt-street" aria-describedby="pt-street"
+              placeholder="123 Happy Street">
+          </div>
+
+          <div class="form-group">
+            <label for="pt-city">City</label>
+            <input type="text" class="form-control" id="pt-city" aria-describedby="pt-city" placeholder="Philadelphia">
+          </div>
+
+          <div class="form-group">
+            <label for="pt-state">State</label>
+            <input type="text" class="form-control" id="pt-state" aria-describedby="pt-state" placeholder="PA">
+          </div>
+
+          <div class="form-group">
+            <label for="pt-zip">Zip Code</label>
+            <input type="text" class="form-control" id="pt-zip" aria-describedby="pt-zip" placeholder="19125">
+          </div>
+
+
+          <button id="submit" class="btn btn-primary float-right">Submit</button>
+        </form>
+        <h3>Examples:</h3>
+        <ul id="example-list" class="list-group">
+          {{#each examples}}
+          <li data-id="{{this.id}}" class="list-group-item">
+            <a href="example/{{this.id}}">{{this.text}}</a>
+            <button class="btn btn-danger float-right delete">ｘ</button>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
