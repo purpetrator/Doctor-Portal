@@ -3,7 +3,7 @@ module.exports = {
   development: {
     username: "root",
     password: process.env.MYSQL_PASSWORD,
-    database: "exampledb",
+    database: "sequelize_passport",
     host: "localhost",
     dialect: "mysql"
   },
