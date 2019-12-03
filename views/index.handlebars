@@ -1,21 +1,65 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">{{msg}}</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
+
 <div id="home">
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+
+        <p>
+          <a class="btn btn-primary" data-toggle="collapse" href="#addPatient" role="button" aria-expanded="false"
+            aria-controls="addPatient">
+            Add patient information
+          </a>
+          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#searchPatient"
+            aria-expanded="false" aria-controls="searchPatient">
+            Search patient information
+          </button>
+        </p>
+
+        <div class="collapse" id="addPatient">
+          <div class="card card-body">
+            <h3>Add patient information</h3>
+            <form class="clearfix mb-4" action="POST">
+              <div class="form-group">
+                <label for="example-text">Full Name</label>
+                <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
+                  placeholder="Enter Full Name">
+              </div>
+              <div class="form-group">
+                <label for="example-description">Condition Description</label>
+                <textarea class="form-control" id="example-description" aria-describedby="example-description"
+                  placeholder="Enter Condition Description"></textarea>
+              </div>
+              <button id="add" class="btn btn-primary float-right">Add</button>
+            </form>
           </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
+        </div>
+
+        <div class="collapse" id="searchPatient">
+          <div class="card card-body">
+            <h3>Search patient information</h3>
+            <form class="clearfix mb-4" action="POST">
+              <div class="form-group">
+                <label for="example-text">Full Name</label>
+                <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
+                  placeholder="Enter Full Name">
+              </div>
+              <button id="search" class="btn btn-primary float-right">Search</button>
+            </form>
           </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
+        </div>
+
+        <h3>All patient information</h3>
         <ul id="example-list" class="list-group">
           {{#each examples}}
           <li data-id="{{this.id}}" class="list-group-item">
