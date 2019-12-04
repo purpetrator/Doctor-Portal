@@ -1,5 +1,5 @@
 module.exports = function(sequelize, Sequelize) {
-  var User = sequelize.define("user", {
+  var User = sequelize.define("User", {
     id: {
       autoIncrement: true,
       primaryKey: true,
@@ -41,6 +41,14 @@ module.exports = function(sequelize, Sequelize) {
       defaultValue: "active"
     }
   });
+
+  User.associate = function(models) {
+    // Associating User with Posts
+    // When an User is deleted, also delete any associated Posts
+    User.hasMany(models.Patient, {
+      onDelete: "cascade"
+    });
+  };
 
   return User;
 };
