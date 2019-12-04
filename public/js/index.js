@@ -36,37 +36,15 @@ var API = {
       url: "api/patients/" + id,
       type: "DELETE"
     });
+  },
+  updatePatient: function(id) {
+    return $.ajax({
+      url: "api/patients/" + id,
+      type: "PUT",
+      data: post
+    });
   }
 };
-
-// refreshExamples gets new examples from the db and repopulates the list
-// var refreshPatients = function() {
-//   API.getPatients().then(function(data) {
-//     var $examples = data.map(function(example) {
-//       var $a = $("<a>")
-//         .text(example.text)
-//         .attr("href", "/example/" + example.id);
-
-//       var $li = $("<li>")
-//         .attr({
-//           class: "list-group-item",
-//           "data-id": example.id
-//         })
-//         .append($a);
-
-//       var $button = $("<button>")
-//         .addClass("btn btn-danger float-right delete")
-//         .text("ｘ");
-
-//       $li.append($button);
-
-//       return $li;
-//     });
-
-//   $exampleList.empty();
-//   $exampleList.append($examples);
-// });
-// };
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
@@ -125,7 +103,14 @@ var handleDeleteBtnClick = function() {
   });
 };
 
+var handleUpdateBtnClick = function() {
+  console.log("you clicked");
+  console.log("-----------");
+};
+
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 
 $("#delete-btn").on("click", handleDeleteBtnClick);
+
+$("#update-btn").on("click", handleUpdateBtnClick);

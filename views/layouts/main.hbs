@@ -38,6 +38,15 @@
 
 
 <script>
+
+  function showSection() {
+    $("#edit-modal").css("visibility", "visible");
+    $("#info-modal").css("visibility", "hidden");
+  }
+
+  $("#edit-btn").on("click", showSection);
+
+
   // This is the script for the search bar
 
   // autoComplete.js on typing event emitter
