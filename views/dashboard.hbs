@@ -169,7 +169,9 @@
 
         <div class="modal" tabindex="-1" role="dialog" id="info-modal">
           <div class="modal-dialog" role="document">
-            <div class="modal-content">
+
+            {{!-- this is the first modal content --}}
+            <div class="modal-content" id="info-modal">
               <div class="modal-header">
                 <h5 class="modal-title">Patient Information</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -186,8 +188,107 @@
 
               </div>
             </div>
+
+            {{!-- this is the second modal content --}}
+
+            <div class="modal-content" id="edit-modal">
+              <div class="modal-header">
+                <h3 class="modal-title text-info" id="surveyModalTitle">
+                  Edit Patient
+                </h3>
+                {{!-- This is the close button --}}
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                {{!-- THE FORM STARTS HERE --}}
+
+                <form class="clearfix mb-4" action="POST">
+                  <div class="form-group">
+                    <label for="first-name">First Name</label>
+                    <input type="text" id="first-name" class="form-control" aria-describedby="first-name"
+                      value={{feedback.selection.value.lastname}}>
+                  </div>
+                  <div class="form-group">
+                    <label for="last-name">Last Name</label>
+                    <input type="text" class="form-control" id="last-name" aria-describedby="last-name"
+                      placeholder="Enter Last Name">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pt-dob">Date of Birth</label>
+                    <input type="text" class="form-control" id="pt-dob" aria-describedby="pt-dob"
+                      placeholder="01/01/1900">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pt-weight">Weight (lbs)</label>
+                    <input type="text" class="form-control" id="pt-weight" aria-describedby="pt-weight"
+                      placeholder="150">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pt-height">Height (in)</label>
+                    <input type="text" class="form-control" id="pt-height" aria-describedby="pt-height"
+                      placeholder="68">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pt-street">Email</label>
+                    <input type="text" class="form-control" id="pt-email" aria-describedby="pt-street"
+                      placeholder="patient@info.com">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pt-street">Phone Number</label>
+                    <input type="text" class="form-control" id="pt-phone" aria-describedby="pt-street"
+                      placeholder="111-111-1111">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pt-street">Street Address</label>
+                    <input type="text" class="form-control" id="pt-street" aria-describedby="pt-street"
+                      placeholder="123 Happy Street">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pt-city">City</label>
+                    <input type="text" class="form-control" id="pt-city" aria-describedby="pt-city"
+                      placeholder="Philadelphia">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pt-state">State</label>
+                    <input type="text" class="form-control" id="pt-state" aria-describedby="pt-state" placeholder="PA">
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pt-zip">Zip Code</label>
+                    <input type="text" class="form-control" id="pt-zip" aria-describedby="pt-zip" placeholder="19125">
+                  </div>
+
+
+                  <button id="update-btn" class="btn btn-primary float-right">Update</button>
+                </form>
+
+                {{!-- THE FORM ENDS HERE --}}
+
+              </div>
+
+
+            </div>
           </div>
+
+
+
+
         </div>
+
+
+
+
 
 
         <form id="logout" name="logout" method="get" action="/logout">

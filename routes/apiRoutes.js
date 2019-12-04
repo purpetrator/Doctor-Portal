@@ -41,4 +41,14 @@ module.exports = function(app) {
       res.json(dbPatient);
     });
   });
+
+  app.put("/api/patients", function(req, res) {
+    db.Patient.update(req.body, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function(dbPatient) {
+      res.json(dbPatient);
+    });
+  });
 };
