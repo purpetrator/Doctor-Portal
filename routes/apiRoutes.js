@@ -7,6 +7,13 @@ module.exports = function(app) {
       res.json(dbPatients);
     });
   });
+  app.get("/api/patients/bydoctor", function(req, res) {
+    db.Patient.findAll({
+      where: { drid: req.user.id }
+    }).then(function(dbPatients) {
+      res.json(dbPatients);
+    });
+  });
 
   app.get("/api/patient/:id", function(req, res) {
     db.Patient.findOne({ where: { id: req.params.id } }).then(function(
@@ -19,6 +26,8 @@ module.exports = function(app) {
 
   // Create a new Patient
   app.post("/api/patients", function(req, res) {
+    req.body.drid = req.user.id;
+    console.log(req.body);
     db.Patient.create(req.body).then(function(dbPatient) {
       res.json(dbPatient);
     });
