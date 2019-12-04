@@ -93,5 +93,16 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: sequelize.literal("CURRENT_TIMESTAMP()")
     }
   });
+
+  Patient.associate = function(models) {
+    // We're saying that a Patient should belong to a User
+    // A Patient can't be created without a User due to the foreign key constraint
+    Patient.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
   return Patient;
 };
