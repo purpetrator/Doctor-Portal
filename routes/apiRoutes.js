@@ -8,6 +8,15 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/patient/:id", function(req, res) {
+    db.Patient.findOne({ where: { id: req.params.id } }).then(function(
+      dbPatient
+    ) {
+      console.log("DB PATIENT", dbPatient);
+      res.json(dbPatient);
+    });
+  });
+
   // Create a new Patient
   app.post("/api/patients", function(req, res) {
     db.Patient.create(req.body).then(function(dbPatient) {
