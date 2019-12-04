@@ -112,15 +112,20 @@ var handleFormSubmit = function(event) {
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
 var handleDeleteBtnClick = function() {
-  var idToDelete = $(this)
-    .parent()
-    .attr("data-id");
+  console.log("you clicked");
+  console.log("-----------");
 
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
+  var idToDelete = $("#patient-id").val();
+
+  console.log("idToDelete: " + idToDelete);
+
+  API.deletePatient(idToDelete).then(function() {
+    alert("Successfully Deleted");
+    $("#info-modal").modal("hide");
   });
 };
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
-// $patientList.on("click", ".delete", handleDeleteBtnClick);
+
+$("#delete-btn").on("click", handleDeleteBtnClick);
