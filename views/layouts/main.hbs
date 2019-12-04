@@ -4,30 +4,9 @@
 <head>
   <title>Login</title>
   <meta charset="UTF-8" />
-
-
-
-
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <link rel="icon" type="image/png" href="images/icons/favicon.ico" />
-
-  <link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css" />
-
-  <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" />
-
-  <link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css" />
-
-  <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css" />
-
-  <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css" />
-
-  <link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css" />
-
-  <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css" />
-
-  <link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css" />
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/util.css" />
   <link rel="stylesheet" type="text/css" href="css/main.css" />
 
@@ -41,35 +20,20 @@
   <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js"></script>
 
 
+
 </head>
 
 <body>
   {{{body}}}
-
   <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-
-  <script src="vendor/animsition/js/animsition.min.js"></script>
-
-  <script src="vendor/bootstrap/js/popper.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
-  <script src="vendor/select2/select2.min.js"></script>
-
-  <script src="vendor/daterangepicker/moment.min.js"></script>
-  <script src="vendor/daterangepicker/daterangepicker.js"></script>
-
-  <script src="vendor/countdowntime/countdowntime.js"></script>
 
   <script src="js/main.js"></script>
-  <script src="/js/index.js"></script>
+  <script src="js/index.js"></script>
 
 
-
-  <!-- SCRIPTS -->
-  <!-- JQuery -->
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="js/mdb.min.js"></script>
 </body>
 
 
@@ -98,7 +62,6 @@
           patient.fullname = `${patient.firstname} ${patient.lastname}`;
           return patient;
         });
-
         // Post loading placeholder text
         document
           .querySelector("#autoComplete")
@@ -143,9 +106,21 @@
       result.innerHTML = "No Results";
       document.querySelector("#autoComplete_list").appendChild(result);
     },
-    onSelection: feedback => {
+    onSelection: async feedback => {
       console.log(feedback.selection.value.fullname);
       const selection = feedback.selection.value.food;
+      let fullname = feedback.selection.value.fullname;
+      let id = feedback.selection.value.id;
+      const source = await fetch(
+        "http://localhost:3000/api/patient/" + id
+      );
+      const response = await source.json();
+      let modal = document.querySelector("#info-modal")
+      console.log("Response", response)
+      console.log("MODAL", modal)
+      $("#search-modal").modal("hide");
+      $("#info-modal").modal("toggle");
+      $("#patient-info").append("<span>" + "<strong>" + "Name: " + "</strong>" + response.lastname + " " + response.firstname  + "</span>" + "<br>" + "<span>" + "<strong>" + "Date of Birth: " +  "</strong>" + response.dob + "</span>" + "<br>" + "<span>" + "<strong>" + "Address: " + "</strong>" + response.street + ", " + response.city + ", " + response.state + ", " + response.zip + "</span>" + "<br>" + "<span>" + "<strong>" + "Phone: " +  "</strong>" + response.phone + "</span>" + "<br>" + "<br>" + "<span>" + "<strong>" + "Height: " +  "</strong>" + response.height + " in." + "</span>" + " "+ "<span>" + "<strong>" + "Weight: " +  "</strong>" + response.weight + " lbn." + "</span>" + "<br>")
       // Render selected choice to selection div
       document.querySelector(".selection").innerHTML = selection;
       // Clear Input
@@ -217,6 +192,7 @@
       }
     });
   });
+
 
 </script>
 
