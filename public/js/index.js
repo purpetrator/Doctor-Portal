@@ -11,7 +11,6 @@ var $city = $("#pt-city");
 var $state = $("#pt-state");
 var $zip = $("#pt-zip");
 var $submitBtn = $("#submit");
-// var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -37,11 +36,11 @@ var API = {
       type: "DELETE"
     });
   },
-  updatePatient: function(id) {
+  updatePatient: function(id, updatedPatient) {
     return $.ajax({
       url: "api/patients/" + id,
       type: "PUT",
-      data: post
+      data: updatedPatient
     });
   }
 };
@@ -104,8 +103,44 @@ var handleDeleteBtnClick = function() {
 };
 
 var handleUpdateBtnClick = function() {
+  event.preventDefault();
   console.log("you clicked");
   console.log("-----------");
+
+  var idToUpdate = $("#patient-id").val();
+
+  console.log("idToUpdate: " + idToUpdate);
+
+  var $firstName = $("#first-name-e");
+  var $lastName = $("#last-name-e");
+  var $dob = $("#pt-dob-e");
+  var $weight = $("#pt-weight-e");
+  var $height = $("#pt-height-e");
+  var $phone = $("#pt-phone-e");
+  var $email = $("#pt-email-e");
+  var $street = $("#pt-street-e");
+  var $city = $("#pt-city-e");
+  var $state = $("#pt-state-e");
+  var $zip = $("#pt-zip-e");
+
+  var updatedPatient = {
+    firstname: $firstName.val().trim(),
+    lastname: $lastName.val().trim(),
+    dob: $dob.val().trim(),
+    weight: $weight.val().trim(),
+    height: $height.val().trim(),
+    email: $email.val().trim(),
+    phone: $phone.val().trim(),
+    street: $street.val().trim(),
+    city: $city.val().trim(),
+    state: $state.val().trim(),
+    zip: $zip.val().trim()
+  };
+
+  API.updatePatient(idToUpdate, updatedPatient).then(function() {
+    $("#info-modal").modal("hide");
+    alert("Successfully updated");
+  });
 };
 
 // Add event listeners to the submit and delete buttons

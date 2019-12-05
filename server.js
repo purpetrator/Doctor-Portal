@@ -40,7 +40,7 @@ app.set("view engine", ".hbs");
 //end of new hbs for passport.js
 
 // Routes
-var authRoute = require("./routes/auth.js")(app,passport);
+var authRoute = require("./routes/auth.js")(app, passport);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 require("./config/passport/passport.js")(passport, db.user);
