@@ -6,7 +6,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-   <!-- Favicons -->
+  <!-- Favicons -->
   <link href="img/favicon.png" rel="icon">
   <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
 
@@ -16,9 +16,9 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
 
- <!--external css-->
+  <!--external css-->
   <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <link rel="stylesheet" type="text/css" href="css/zabuto_calendar.css">
+
   <link rel="stylesheet" type="text/css" href="lib/gritter/css/jquery.gritter.css" />
   <!-- Custom styles for this template -->
   <link href="css/style.css" rel="stylesheet">
@@ -31,7 +31,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js"></script>
 
-
+  <link rel="stylesheet" type="text/css" href="css/zabuto_calendar.css">
 
 </head>
 
@@ -40,29 +40,31 @@
   <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+  <script src="lib/zabuto_calendar.js"></script>
   <script src="js/main.js"></script>
   <script src="js/index.js"></script>
   <!-- Calendar and top memnue-->
   <script class="include" type="text/javascript" src="lib/jquery.dcjqaccordion.2.7.js"></script>
   <script src="lib/common-scripts.js"></script>
-  <script src="lib/zabuto_calendar.js"></script>
-  
+
+
   <script type="application/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
       $("#date-popover").popover({
         html: true,
         trigger: "manual"
       });
       $("#date-popover").hide();
-      $("#date-popover").click(function(e) {
+      $("#date-popover").click(function (e) {
         $(this).hide();
       });
 
       $("#my-calendar").zabuto_calendar({
-        action: function() {
+        action: function () {
           return myDateFunction(this.id, false);
         },
-        action_nav: function() {
+        action_nav: function () {
           return myNavFunction(this.id);
         },
         ajax: {
@@ -70,14 +72,14 @@
           modal: true
         },
         legend: [{
-            type: "text",
-            label: "Special event",
-            badge: "00"
-          },
-          {
-            type: "block",
-            label: "Regular event",
-          }
+          type: "text",
+          label: "Special event",
+          badge: "00"
+        },
+        {
+          type: "block",
+          label: "Regular event",
+        }
         ]
       });
     });
@@ -96,12 +98,12 @@
 
 <script>
 
-  function showSection() {
-    $("#edit-modal").css("visibility", "visible");
-    $("#info-modal").css("visibility", "hidden");
-  }
+  // function showSection() {
+  //   $("#edit-modal").show();
+  //   $("#info-modal").hide();
+  // }
 
-  $("#edit-btn").on("click", showSection);
+  // $("#edit-btn").on("click", showSection);
 
 
   // This is the script for the search bar
@@ -190,7 +192,7 @@
 
 
       $("#search-modal").modal("hide");
-      $("#info-modal").modal("toggle");
+      $("#patient-modal").modal("toggle");
       $("#patient-info").empty();
       $("#patient-info").append("<span>" + "<strong>" + "Name: " + "</strong>" + feedback.selection.value.lastname + " " + feedback.selection.value.firstname + "</span>" + "<br>" + "<span>" + "<strong>" + "Date of Birth: " + "</strong>" + feedback.selection.value.dob + "</span>" + "<br>" + "<span>" + "<strong>" + "Address: " + "</strong>" + feedback.selection.value.street + ", " + feedback.selection.value.city + ", " + feedback.selection.value.state + ", " + feedback.selection.value.zip + "</span>" + "<br>" + "<span>" + "<strong>" + "Phone: " + "</strong>" + feedback.selection.value.phone + "</span>" + "<br>" + "<br>" + "<span>" + "<strong>" + "Height: " + "</strong>" + feedback.selection.value.height + " in." + "</span>" + " " + "<span>" + "<strong>" + "Weight: " + "</strong>" + feedback.selection.value.weight + " lbn." + "</span>" + "<br>");
       $("#patient-info").append("<input type='hidden' id='patient-id' value='" + feedback.selection.value.id + "'>");
@@ -205,8 +207,8 @@
       // Concole log autoComplete data feedback
       console.log(feedback);
       function showSection() {
-        $("#edit-modal").css("visibility", "visible");
-        $("#info-modal").css("visibility", "hidden");
+        $("#edit-modal").show();
+        $("#info-modal").hide();
         $("#first-name-e").attr("value", feedback.selection.value.firstname);
         $("#last-name-e").attr("value", feedback.selection.value.lastname);
         $("#pt-dob-e").attr("value", feedback.selection.value.dob);
@@ -284,6 +286,22 @@
       }
     });
   });
+
+  function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+      h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+  }
+  function checkTime(i) {
+    if (i < 10) { i = "0" + i };  // add zero in front of numbers < 10
+    return i;
+  }
 
 
 </script>

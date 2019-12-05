@@ -1,5 +1,5 @@
 /*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
+[ FONT ] LOGIN PAGE STYLING (ENTIRE SHEET) */
 
 @font-face {
   font-family: Poppins-Regular;
@@ -645,5 +645,5 @@ input.input100 {
 }
 
 #edit-modal {
-  visibility: hidden;
+  display: none;
 }
