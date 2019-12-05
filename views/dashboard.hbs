@@ -55,19 +55,10 @@
   <section id="main-content">
     <section class="wrapper">
 
-      <div class="row mt mx-5">
+      <div class="row mt mx-5" id="row1">
 
-        <div class="col-md-4 mb">
-
-          <div class="white-panel pn">
-            <div class="white-header">
-              <h5>VIEW ALL PATIENTS</h5>
-            </div>
-          </div>
-        </div>
-        <!-- /col-md-4 -->
-        <div class="col-md-4 mb">
-
+        {{!-- SEARCH PATIENT CARD --}}
+        <div class="col-md-6 mb">
           <div class="white-panel pn">
             <div class="white-header">
               <h5>SEARCH PATIENT</h5>
@@ -77,9 +68,9 @@
             </button>
           </div>
         </div>
-        <!-- /col-md-4 -->
-        <div class="col-md-4 mb">
 
+        {{!-- ADD PATIENT CARD --}}
+        <div class="col-md-6 mb">
           <div class="white-panel pn">
             <div class="white-header">
               <h5>ADD NEW PATIENT</h5>
@@ -89,12 +80,15 @@
             </button>
           </div>
         </div>
-        <!-- /col-md-4 -->
+
       </div>
 
-      <div class="row text-center mt">
+
+      <div class="row mt mx-5" id="row2">
+
+        {{!-- CALENDAR CARD --}}
         <div class="col-md-4 mb">
-          <div class="panel no-margin">
+          <div class="white-panel">
             <div class="panel-body">
               <div id="date-popover" class="popover top"
                 style="cursor: pointer; disadding: block; margin-left: 33%; margin-top: -50px; width: 175px;">
@@ -106,6 +100,8 @@
             </div>
           </div>
         </div>
+
+        {{!-- WEATHER CARD --}}
         <div class="col-md-4 mb">
           <div class="white-panel pn py-3">
             <i class="fa fa-cloud fa-4x"></i>
@@ -113,15 +109,36 @@
             <h4>PHILADELPHIA</h4>
           </div>
         </div>
+
+        {{!-- TIME CARD --}}
         <div class="col-md-4 mb">
           <div class="white-panel pn py-3">
-            <i class="fa fa-clock fa-4x"></i>
-            <h2>12:15 AM</h2>
+
+            <body onload="startTime()">
+
+              <div class="card mb-3 border-0 mx-auto" style="max-width: 18rem;">
+                <div class="card-header border-0" class="far fa-clock">
+                  <h3>clock</h3>
+                </div>
+                <div class="card-body text-primary">
+                  <h5 class="card-title"></h5>
+                  <div style="font-size: xx-large;" id="txt"></div>
+                  <p class="card-text"></p>
+                </div>
+              </div>
+
+            </body>
           </div>
         </div>
-      </div>
 
+      </div>
     </section>
+
+
+
+
+
+
 
     {{!-- This is our ADD PATIENT modal --}}
 
@@ -216,8 +233,6 @@
     </div>
 
 
-
-
     {{!-- This is our SEARCH modal --}}
 
     <div class="modal" tabindex="-1" role="dialog" id="search-modal">
@@ -262,11 +277,11 @@
 
     {{!-- This is our PATIENT INFO modal --}}
 
-    <div class="modal" tabindex="-1" role="dialog" id="info-modal">
+    <div class="modal" tabindex="-1" role="dialog" id="patient-modal">
       <div class="modal-dialog modal-lg" role="document">
 
         {{!-- this is the first modal content --}}
-        <div class="modal-content">
+        <div class="modal-content" id="info-modal">
           <div class="modal-header">
             <h5 class="modal-title">Patient Information</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
