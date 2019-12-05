@@ -42,10 +42,10 @@ module.exports = function(app) {
     });
   });
 
-  app.put("/api/patients", function(req, res) {
+  app.put("/api/patients/:id", function(req, res) {
     db.Patient.update(req.body, {
       where: {
-        id: req.body.id
+        id: req.params.id
       }
     }).then(function(dbPatient) {
       res.json(dbPatient);
