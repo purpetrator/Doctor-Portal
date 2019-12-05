@@ -147,6 +147,25 @@
         .setAttribute("placeholder", selection);
       // Concole log autoComplete data feedback
       console.log(feedback);
+      function showSection() {
+        $("#edit-modal").css("visibility", "visible");
+        $("#info-modal").css("visibility", "hidden");
+        $("#first-name-e").attr("value", feedback.selection.value.firstname);
+        $("#last-name-e").attr("value", feedback.selection.value.lastname);
+        $("#pt-dob-e").attr("value", feedback.selection.value.dob);
+        $("#pt-weight-e").attr("value", feedback.selection.value.weight);
+        $("#pt-height-e").attr("value", feedback.selection.value.height);
+        $("#pt-email-e").attr("value", feedback.selection.value.email);
+        $("#pt-phone-e").attr("value", feedback.selection.value.phone);
+        $("#pt-street-e").attr("value", feedback.selection.value.street);
+        $("#pt-city-e").attr("value", feedback.selection.value.city);
+        $("#pt-state-e").attr("value", feedback.selection.value.state);
+        $("#pt-zip-e").attr("value", feedback.selection.value.zip);
+
+
+      }
+
+      $("#edit-btn").on("click", showSection);
     }
   });
 
