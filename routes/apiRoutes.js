@@ -7,6 +7,7 @@ module.exports = function(app) {
       res.json(dbPatients);
     });
   });
+
   app.get("/api/patients/bydoctor", function(req, res) {
     db.Patient.findAll({
       where: { drid: req.user.id }
@@ -21,6 +22,14 @@ module.exports = function(app) {
     ) {
       console.log("DB PATIENT", dbPatient);
       res.json(dbPatient);
+    });
+  });
+
+  app.get("/api/visits/:pid", function(req, res) {
+    db.Visit.findAll({
+      where: { pid: req.params.pid }
+    }).then(function(dbVisits) {
+      res.json(dbVisits);
     });
   });
 
