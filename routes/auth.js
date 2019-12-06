@@ -25,6 +25,7 @@ module.exports = function(app, passport) {
   );
 
   function isLoggedIn(req, res, next) {
+    // console.log("REQUEST:", req)
     if (req.isAuthenticated()) {
       return next();
     }
