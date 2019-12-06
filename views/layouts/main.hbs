@@ -116,7 +116,7 @@
           .setAttribute("placeholder", "Loading...");
         // Fetch External Data Source
         const source = await fetch(
-          "http://localhost:3000/api/patients/bydoctor"
+          "/api/patients/bydoctor"
         );
         const response = await source.json();
 
@@ -176,10 +176,6 @@
       console.log("id " + id);
       console.log("name " + fullname);
 
-      // const source = await fetch(
-      //   "http://localhost:3000/api/patients/bydoctor" + id
-      // );
-      // const response = await source.json();
 
       let modal = document.querySelector("#info-modal")
 
