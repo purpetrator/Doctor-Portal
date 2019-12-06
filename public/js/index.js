@@ -208,70 +208,6 @@ var handleVisitBtnClick = function() {
       $("#visit-body").append(card);
     }
   });
-
-  // for loop over dbVisit and dynamically create card to display each item in array
-
-  //   $("#patient-info").empty();
-  //   $("#patient-info").append(
-  //     "<span>" +
-  //       "<strong>" +
-  //       "Name: " +
-  //       "</strong>" +
-  //       feedback.selection.value.lastname +
-  //       " " +
-  //       feedback.selection.value.firstname +
-  //       "</span>" +
-  //       "<br>" +
-  //       "<span>" +
-  //       "<strong>" +
-  //       "Date of Birth: " +
-  //       "</strong>" +
-  //       feedback.selection.value.dob +
-  //       "</span>" +
-  //       "<br>" +
-  //       "<span>" +
-  //       "<strong>" +
-  //       "Address: " +
-  //       "</strong>" +
-  //       feedback.selection.value.street +
-  //       ", " +
-  //       feedback.selection.value.city +
-  //       ", " +
-  //       feedback.selection.value.state +
-  //       ", " +
-  //       feedback.selection.value.zip +
-  //       "</span>" +
-  //       "<br>" +
-  //       "<span>" +
-  //       "<strong>" +
-  //       "Phone: " +
-  //       "</strong>" +
-  //       feedback.selection.value.phone +
-  //       "</span>" +
-  //       "<br>" +
-  //       "<br>" +
-  //       "<span>" +
-  //       "<strong>" +
-  //       "Height: " +
-  //       "</strong>" +
-  //       feedback.selection.value.height +
-  //       " in." +
-  //       "</span>" +
-  //       " " +
-  //       "<span>" +
-  //       "<strong>" +
-  //       "Weight: " +
-  //       "</strong>" +
-  //       feedback.selection.value.weight +
-  //       " lbn." +
-  //       "</span>" +
-  //       "<br>"
-  //   );
-  //   $("#patient-info").append(
-  //     "<input type='hidden' id='patient-id' value='" +
-  //       feedback.selection.value.id +
-  //       "'>"
-  //   );
 };
 
 var closeVisit = function() {
@@ -288,3 +224,7 @@ $(document).on("click", "#update-btn", handleUpdateBtnClick);
 $(document).on("click", "#visit-btn", handleVisitBtnClick);
 
 $(document).on("click", "#visit-close", closeVisit);
+
+$(document).ready(function() {
+  alert("hello");
+});
