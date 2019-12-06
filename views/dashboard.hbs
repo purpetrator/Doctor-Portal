@@ -86,11 +86,20 @@
 
         {{!-- WEATHER CARD --}}
         <div class="col-md-4 mb">
-          <div class="white-panel pn py-3">
-            <i class="fa fa-cloud fa-4x"></i>
-            <br> <br>
-            <h2>11º C</h2>
-            <h4>PHILADELPHIA</h4>
+          <div class="white-panel pn py-3 weather">
+            <div id="icon"></div>
+            <div id="city"></div>
+            <h3 id="temp"></h3>
+            <div class="row my-3 text-center">
+              <div class="col-6">
+                <div id="minTemp"></div>
+              </div>
+              <div class="col-6">
+                <div id="maxTemp"></div>
+              </div>
+            </div>
+
+
           </div>
         </div>
 
