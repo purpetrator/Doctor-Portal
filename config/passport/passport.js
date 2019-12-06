@@ -102,7 +102,7 @@ module.exports = function(passport, user) {
                 message: "Email does not exist"
               });
             }
-
+            // console.log("Our user is: ", user);
             if (!isValidPassword(user.password, password)) {
               return done(null, false, {
                 message: "Incorrect password."

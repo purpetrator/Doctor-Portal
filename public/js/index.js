@@ -78,7 +78,9 @@ var handleFormSubmit = function(event) {
   }
 
   API.savePatient(patient).then(function() {
-    // refreshPatients();
+    $("#add-modal").modal("hide");
+    $("#addAlert").modal("show");
+    // alert("Successfully added");
   });
 
   //Resets fields to blanks
@@ -87,6 +89,8 @@ var handleFormSubmit = function(event) {
   $dob.val("");
   $weight.val("");
   $height.val("");
+  $phone.val("");
+  $email.val("");
   $street.val("");
   $city.val("");
   $state.val("");
@@ -103,8 +107,8 @@ var handleDeleteBtnClick = function() {
   console.log("idToDelete: " + idToDelete);
 
   API.deletePatient(idToDelete).then(function() {
-    alert("Successfully Deleted");
-    $("#info-modal").modal("hide");
+    $("#patient-modal").modal("hide");
+    $("#deleteAlert").modal("show");
   });
 };
 
@@ -145,7 +149,7 @@ var handleUpdateBtnClick = function() {
 
   API.updatePatient(idToUpdate, updatedPatient).then(function() {
     $("#patient-modal").modal("hide");
-    alert("Successfully updated");
+    $("#updateAlert").modal("show");
   });
 };
 
