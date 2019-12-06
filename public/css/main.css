@@ -647,3 +647,7 @@ input.input100 {
 #edit-modal {
   display: none;
 }
+
+.card-header {
+  font-size: 16pt;
+}
