@@ -270,5 +270,5 @@ $(document).ready(function() {
       console.log("Humidity: " + humidity);
       console.log("Temperature (F): " + temp);
     });
-  alert("hello");
+
 });
