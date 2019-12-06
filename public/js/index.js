@@ -70,8 +70,6 @@ var handleFormSubmit = function(event) {
     zip: $zip.val().trim()
   };
 
-  console.log(patient);
-
   if (!(patient.firstname && patient.lastname)) {
     alert("You must enter a first and last name");
     return;
@@ -80,7 +78,6 @@ var handleFormSubmit = function(event) {
   API.savePatient(patient).then(function() {
     $("#add-modal").modal("hide");
     $("#addAlert").modal("show");
-    // alert("Successfully added");
   });
 
   //Resets fields to blanks
@@ -96,12 +93,8 @@ var handleFormSubmit = function(event) {
   $state.val("");
   $zip.val("");
 };
-// handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function() {
-  console.log("you clicked");
-  console.log("-----------");
 
+var handleDeleteBtnClick = function() {
   var idToDelete = $("#patient-id").val();
 
   console.log("idToDelete: " + idToDelete);
@@ -114,8 +107,6 @@ var handleDeleteBtnClick = function() {
 
 var handleUpdateBtnClick = function() {
   event.preventDefault();
-  console.log("you clicked");
-  console.log("-----------");
 
   var idToUpdate = $("#patient-id").val();
 
@@ -150,14 +141,11 @@ var handleUpdateBtnClick = function() {
   API.updatePatient(idToUpdate, updatedPatient).then(function() {
     $("#patient-modal").modal("hide");
     $("#updateAlert").modal("show");
-    location.reload();
   });
 };
 
 var handleVisitBtnClick = function() {
   event.preventDefault();
-  console.log("you clicked");
-  console.log("-----------");
 
   var patientID = $("#patient-id").val();
 
@@ -166,10 +154,8 @@ var handleVisitBtnClick = function() {
   API.getVisit(patientID).then(function(dbVisit) {
     $("#patient-modal").modal("hide");
     $("#visit-body").empty();
-    // console.log(dbVisit);
-    for (var i = 0; i < dbVisit.length; i++) {
-      // console.log(dbVisit[i]);
 
+    for (var i = 0; i < dbVisit.length; i++) {
       var date = dbVisit[i].date;
       var rx = dbVisit[i].rx;
       var symptoms = dbVisit[i].symptoms;
@@ -214,6 +200,10 @@ var closeVisit = function() {
   $("#patient-modal").modal("show");
 };
 
+var closeUpdate = function() {
+  location.reload();
+};
+
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 
@@ -224,6 +214,8 @@ $(document).on("click", "#update-btn", handleUpdateBtnClick);
 $(document).on("click", "#visit-btn", handleVisitBtnClick);
 
 $(document).on("click", "#visit-close", closeVisit);
+
+$(document).on("click", "#close-update", closeUpdate);
 
 $(document).ready(function() {
   var APIKey = "166a433c57516f51dfab1f7edaed8413";
@@ -240,12 +232,9 @@ $(document).ready(function() {
   })
     // We store all of the retrieved data inside of an object called "response"
     .then(function(response) {
-      // Log the queryURL
-      console.log(queryURL);
       var weatherIcon = response.weather[0].icon;
       var iconImg = $("<img>");
-      // Log the resulting object
-      console.log(response);
+
       iconImg.attr(
         "src",
         "http://openweathermap.org/img/wn/" + weatherIcon + "@2x.png"
@@ -254,8 +243,6 @@ $(document).ready(function() {
       // Transfer content to HTML
       city = $("#city").html("<h4>" + response.name + "</h4>");
       city.addClass("text-center");
-      wind = $("#wind").text("Wind Speed: " + response.wind.speed);
-      humidity = $("#humidity").text("Humidity: " + response.main.humidity);
       temp = $("#temp").text(Math.floor(response.main.temp) + "º" + " F");
       minTemp = $("#minTemp").text(
         "Lowest: " + Math.floor(response.main.temp_min) + "º" + " F"
@@ -264,11 +251,5 @@ $(document).ready(function() {
         "Highest: " + Math.floor(response.main.temp_max) + "º" + " F"
       );
       $("#icon").append(iconImg);
-
-      // Log the data in the console as well
-      console.log("Wind Speed: " + wind);
-      console.log("Humidity: " + humidity);
-      console.log("Temperature (F): " + temp);
     });
-
 });
