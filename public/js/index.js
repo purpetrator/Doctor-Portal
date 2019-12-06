@@ -150,6 +150,7 @@ var handleUpdateBtnClick = function() {
   API.updatePatient(idToUpdate, updatedPatient).then(function() {
     $("#patient-modal").modal("hide");
     $("#updateAlert").modal("show");
+    location.reload();
   });
 };
 
@@ -179,8 +180,8 @@ var handleVisitBtnClick = function() {
 
       var cardHeader = $("<div>");
       cardHeader.addClass("card-header form-rounded");
-      cardHeader.text(date);
-      cardHeader.append(" <i class='fas fa-calendar'></i>");
+      cardHeader.text(" " + date);
+      cardHeader.prepend(" <i class='far fa-calendar-alt'></i> ");
 
       var cardBody = $("<div>");
       cardBody.addClass("card-body");

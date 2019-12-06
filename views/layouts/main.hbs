@@ -33,6 +33,8 @@
 
   <link rel="stylesheet" type="text/css" href="css/zabuto_calendar.css">
 
+  <script src="https://kit.fontawesome.com/0cc8d5da0a.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -97,14 +99,6 @@
 
 
 <script>
-
-  // function showSection() {
-  //   $("#edit-modal").show();
-  //   $("#info-modal").hide();
-  // }
-
-  // $("#edit-btn").on("click", showSection);
-
 
   // This is the script for the search bar
 
@@ -194,8 +188,93 @@
       $("#search-modal").modal("hide");
       $("#patient-modal").modal("toggle");
       $("#patient-info").empty();
-      $("#patient-info").append("<span>" + "<strong>" + "Name: " + "</strong>" + feedback.selection.value.lastname + " " + feedback.selection.value.firstname + "</span>" + "<br>" + "<span>" + "<strong>" + "Date of Birth: " + "</strong>" + feedback.selection.value.dob + "</span>" + "<br>" + "<span>" + "<strong>" + "Address: " + "</strong>" + feedback.selection.value.street + ", " + feedback.selection.value.city + ", " + feedback.selection.value.state + ", " + feedback.selection.value.zip + "</span>" + "<br>" + "<span>" + "<strong>" + "Phone: " + "</strong>" + feedback.selection.value.phone + "</span>" + "<br>" + "<br>" + "<span>" + "<strong>" + "Height: " + "</strong>" + feedback.selection.value.height + " in." + "</span>" + " " + "<span>" + "<strong>" + "Weight: " + "</strong>" + feedback.selection.value.weight + " lbn." + "</span>" + "<br>");
+
+
+
+
+      var lastName = feedback.selection.value.lastname;
+      var firstName = feedback.selection.value.firstname;
+      var dOB = feedback.selection.value.dob;
+      var street = feedback.selection.value.street;
+      var city = feedback.selection.value.city;
+      var state = feedback.selection.value.state;
+      var zip = feedback.selection.value.zip;
+      var phone = feedback.selection.value.phone;
+      var email = feedback.selection.value.email;
+      var height = feedback.selection.value.height;
+      var weight = feedback.selection.value.weight;
+
+      var card = $("<div>");
+      card.addClass("card border-info mb-3 form-rounded m-3 width");
+
+      var cardHeader = $("<div>");
+      cardHeader.addClass("card-header form-rounded font-weight-bold");
+      cardHeader.html(" " + lastName + ", " + firstName);
+      cardHeader.prepend(" <i class='fas fa-address-card'></i>  ");
+
+      var cardBody = $("<div>");
+      cardBody.addClass("card-body");
+      cardBody.attr("id", "patient-card");
+
+      var paragraph1 = $("<p>");
+      paragraph1.html("<strong>Date of Birth:</strong> " + dOB);
+      paragraph1.addClass("card-text");
+
+      var paragraph2 = $("<p>");
+      paragraph2.html("<strong>Height (in):</strong> " + height);
+      paragraph2.addClass("card-text");
+
+      var paragraph3 = $("<p>");
+      paragraph3.html("<strong>Weight (lb):</strong> " + weight);
+      paragraph3.addClass("card-text");
+
+
+      var paragraph4 = $("<p>");
+      paragraph4.html("<strong>City:</strong> " + city);
+      paragraph4.addClass("card-text");
+
+      var paragraph5 = $("<p>");
+      paragraph5.html("<strong>State:</strong> " + state);
+      paragraph5.addClass("card-text");
+
+      var paragraph6 = $("<p>");
+      paragraph6.html("<strong>Zip:</strong> " + zip);
+      paragraph6.addClass("card-text");
+
+      var paragraph7 = $("<p>");
+      paragraph7.html("<strong>Phone:</strong> " + phone);
+      paragraph7.addClass("card-text");
+
+      var paragraph8 = $("<p>");
+      paragraph8.html("<strong>Email:</strong> " + email);
+      paragraph8.addClass("card-text");
+
+
+
+      cardBody.append(paragraph1);
+      cardBody.append(paragraph2);
+      cardBody.append(paragraph3);
+      cardBody.append(paragraph4);
+      cardBody.append(paragraph5);
+      cardBody.append(paragraph6);
+      cardBody.append(paragraph7);
+      cardBody.append(paragraph8);
+      card.append(cardHeader);
+      card.append(cardBody);
+
+
       $("#patient-info").append("<input type='hidden' id='patient-id' value='" + feedback.selection.value.id + "'>");
+
+      $("#patient-info").append(card);
+
+
+
+
+
+
+
+
+
       // Render selected choice to selection div
       document.querySelector(".selection").innerHTML = selection;
       // Clear Input
