@@ -103,25 +103,25 @@
                     </div>
                   </div>
               
+          <div class="white-panel pn py-3">
+            <i class="fa fa-cloud fa-4x"></i>
+            <br> <br>
+            <h2>11º C</h2>
+            <h4>PHILADELPHIA</h4>
+          </div>
+        </div>
 
         {{!-- TIME CARD --}}
         <div class="col-md-4 mb">
           <div class="white-panel pn py-3">
 
-            <body onload="startTime()">
+            <i class="fa fa-clock fa-4x"></i>
+            <br> <br>
 
-              <div class="card mb-3 border-0 mx-auto" style="max-width: 18rem;">
-                <div class="card-header border-0" class="far fa-clock">
-                  <h3>clock</h3>
-                </div>
-                <div class="card-body text-primary">
-                  <h5 class="card-title"></h5>
-                  <div style="font-size: xx-large;" id="txt"></div>
-                  <p class="card-text"></p>
-                </div>
-              </div>
+            <h2 id="txt">{{moment date=d format="HH:MM A"}}</h2>
+            <h5 id="txt">{{moment date=d format="DD/MM/YYYY"}}</h5>
 
-            </body>
+
           </div>
         </div>
 

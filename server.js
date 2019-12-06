@@ -3,6 +3,9 @@ var express = require("express");
 var exphbs = require("express-handlebars");
 var db = require("./models");
 var app = express();
+var Handlebars = require("handlebars");
+var MomentHandler = require("handlebars.moment");
+MomentHandler.registerHelpers(Handlebars);
 
 //Passport.js
 var passport = require("passport");
