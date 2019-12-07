@@ -1,6 +1,6 @@
 <section id="container">
 
-  <header class="header black-bg">
+  <header class="header">
     <div class="sidebar-toggle-box">
       <div class="fa fa-bars tooltips burger" data-placement="right" data-original-title="Toggle Navigation"></div>
     </div>
@@ -9,13 +9,7 @@
 
     <div class="top-menu">
       <ul class="nav pull-right top-menu">
-        <li>
-          <form id="logout" name="logout" method="get" action="/logout">
-            <button class="btn-lg btn-info mx-5" type="submit">
-              Logout
-            </button>
-          </form>
-        </li>
+
       </ul>
     </div>
   </header>
@@ -29,7 +23,13 @@
         <p class="centered my-5"><img class="img-thumbnail" src={{user.about}}></a></p>
         <h4 class="centered">Welcome</h4>
         <h4 class="centered"> Dr. {{user.lastname}}!</h4>
-
+        <li class="logout-wrapper">
+          <form id="logout" name="logout" method="get" action="/logout">
+            <button class="btn-lg mx-5" type="submit">
+              Logout
+            </button>
+          </form>
+        </li>
     </div>
   </aside>
   <!--sidebar end-->
@@ -42,27 +42,29 @@
 
         {{!-- SEARCH PATIENT CARD --}}
         <div class="col-md-6 mb">
-          <div class="white-panel pn">
+          <div class="white-panel pn card-pattern">
             <div class="white-header">
               <h5>SEARCH PATIENT</h5>
             </div>
-            <button class="btn btn-lg btn-success" id="search-patient" data-toggle="modal" data-target="#search-modal">
-              <i class="fas fa-search"></i> Search Patient
-            </button>
+            <div class="button-container">
+              <button class="btn btn-lg search-patient-button" id="search-patient" data-toggle="modal" data-target="#search-modal">
+                <i class="fas fa-search"></i> Search Patient
+              </button>
+            </div>
           </div>
         </div>
 
         {{!-- ADD PATIENT CARD --}}
         <div class="col-md-6 mb">
-          <div class="white-panel pn">
+          <div class="white-panel pn card-pattern">
             <div class="white-header">
               <h5>ADD NEW PATIENT</h5>
             </div>
-            <button class="btn btn-lg btn-warning" id="add-patient" data-toggle="modal" data-target="#add-modal">
-              <i class="fas fa-plus"></i> Add New Patient
-
-
-            </button>
+            <div class="button-container">
+              <button class="btn btn-lg add-patient-button" id="add-patient" data-toggle="modal" data-target="#add-modal">
+                <i class="fas fa-plus"></i> Add New Patient
+              </button>
+            </div>
           </div>
         </div>
 
@@ -72,7 +74,7 @@
       <div class="row mt mx-5" id="row2">
 
         {{!-- CALENDAR CARD --}}
-        <div class="col-md-4 mb">
+        <div class="col-md-4 mb calendar-wrapper">
           <div class="white-panel">
             <div class="panel-body">
               <div id="date-popover" class="popover top"
@@ -107,7 +109,7 @@
 
         {{!-- TIME CARD --}}
         <div class="col-md-4 mb">
-          <div class="white-panel pn py-3">
+          <div class="white-panel clock-wrapper pn py-3">
 
             <i class="fa fa-clock fa-4x"></i>
             <br> <br>
@@ -282,7 +284,7 @@
 
 
             <div class="text-right my-3">
-              <button class="btn btn-success btn-lg" id="visit-btn" data-toggle="modal" data-target="#visit-modal">View
+              <button class="btn search-patient-button btn-lg" id="visit-btn" data-toggle="modal" data-target="#visit-modal">View
                 Visits</button>
               <button class="btn btn-info btn-lg" id="edit-btn">Edit</button>
               <button class="btn btn-danger btn-lg" id="delete-btn">Delete</button>
