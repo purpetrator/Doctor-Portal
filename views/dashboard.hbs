@@ -47,7 +47,8 @@
               <h5>SEARCH PATIENT</h5>
             </div>
             <div class="button-container">
-              <button class="btn btn-lg search-patient-button" id="search-patient" data-toggle="modal" data-target="#search-modal">
+              <button class="btn btn-lg search-patient-button" id="search-patient" data-toggle="modal"
+                data-target="#search-modal">
                 <i class="fas fa-search"></i> Search Patient
               </button>
             </div>
@@ -61,7 +62,8 @@
               <h5>ADD NEW PATIENT</h5>
             </div>
             <div class="button-container">
-              <button class="btn btn-lg add-patient-button" id="add-patient" data-toggle="modal" data-target="#add-modal">
+              <button class="btn btn-lg add-patient-button" id="add-patient" data-toggle="modal"
+                data-target="#add-modal">
                 <i class="fas fa-plus"></i> Add New Patient
               </button>
             </div>
@@ -114,8 +116,8 @@
             <i class="fa fa-clock fa-4x"></i>
             <br> <br>
 
-            <h2 id="txt">{{moment date=d format="hh:MM A"}}</h2>
-            <h5 id="txt">{{moment date=d format="DD/MM/YYYY"}}</h5>
+            <h2 id="txt">{{moment date=d format="hh:mm A"}}</h2>
+            <h5 id="txt">{{moment date=d format="MM/DD/YYYY"}}</h5>
 
 
           </div>
@@ -284,10 +286,11 @@
 
 
             <div class="text-right my-3">
-              <button class="btn search-patient-button btn-lg" id="visit-btn" data-toggle="modal" data-target="#visit-modal">View
+              <button class="btn search-patient-button btn-lg" id="visit-btn" data-toggle="modal"
+                data-target="#visit-modal">View
                 Visits</button>
-              <button class="btn btn-info btn-lg" id="edit-btn">Edit</button>
-              <button class="btn btn-danger btn-lg" id="delete-btn">Delete</button>
+              <button class="btn edit-patient-button btn-lg" id="edit-btn">Edit</button>
+              <button class="btn delete-patient-button btn-lg" id="delete-btn">Delete</button>
             </div>
 
           </div>
@@ -479,8 +482,7 @@
     </div>
 
     {{!-- INPUT VALIDATION MODULE --}}
-    <div class="modal fade" id="inputAlert" tabindex="-1" role="dialog" aria-labelledby="inputAlert"
-      aria-hidden="true">
+    <div class="modal fade" id="inputAlert" tabindex="-1" role="dialog" aria-labelledby="inputAlert" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
           <div class="modal-header">
