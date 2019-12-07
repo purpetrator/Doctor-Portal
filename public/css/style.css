@@ -316,6 +316,32 @@ a.logo span {
   color: white;
 }
 
+.update-patient-btn {
+  border: 1px solid #2e86de;
+  background: white;
+  box-shadow: 2px 4px 8px 0px rgba(46, 61, 73, 0.2);
+  color: #2e86de;
+  transition: all 0.25s ease-in;
+}
+
+.update-patient-btn:hover {
+  background-color: #2e86de;
+  color: white;
+}
+
+.submit-patient-btn {
+  border: 1px solid #2e86de;
+  background: white;
+  box-shadow: 2px 4px 8px 0px rgba(46, 61, 73, 0.2);
+  color: #2e86de;
+  transition: all 0.25s ease-in;
+}
+
+.submit-patient-btn:hover {
+  background-color: #2e86de;
+  color: white;
+}
+
 .calendar-month-header {
   color: white;
   background-color: #48dbfb !important;
