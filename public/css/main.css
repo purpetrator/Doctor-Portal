@@ -644,3 +644,20 @@ input.input100 {
   color: #fff;
 }
 
+.clock-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  margin-top: 14%;
+}
+
+.burger {
+  color: #feca57;
+}
