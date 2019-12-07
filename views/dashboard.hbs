@@ -47,7 +47,7 @@
               <h5>SEARCH PATIENT</h5>
             </div>
             <button class="btn btn-lg btn-success" id="search-patient" data-toggle="modal" data-target="#search-modal">
-              Search Patient
+              <i class="fas fa-search"></i> Search Patient
             </button>
           </div>
         </div>
@@ -59,7 +59,9 @@
               <h5>ADD NEW PATIENT</h5>
             </div>
             <button class="btn btn-lg btn-warning" id="add-patient" data-toggle="modal" data-target="#add-modal">
-              Add patient
+              <i class="fas fa-plus"></i> Add New Patient
+
+
             </button>
           </div>
         </div>
@@ -110,7 +112,7 @@
             <i class="fa fa-clock fa-4x"></i>
             <br> <br>
 
-            <h2 id="txt">{{moment date=d format="HH:MM A"}}</h2>
+            <h2 id="txt">{{moment date=d format="hh:MM A"}}</h2>
             <h5 id="txt">{{moment date=d format="DD/MM/YYYY"}}</h5>
 
 
@@ -388,7 +390,7 @@
     {{!-- This is our VISIT HISTORY modal --}}
     <div class="modal fade" tabindex="-1" role="dialog" id="visit-modal" aria-labelledby="exampleModalLongTitle"
       aria-hidden="true">
-      <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLongTitle">Visit History</h5>

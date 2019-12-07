@@ -204,6 +204,11 @@ var closeUpdate = function() {
   location.reload();
 };
 
+// var closeModal = function() {
+//   $("#edit-modal").hide();
+//   $("#patient-modal").modal("show");
+// };
+
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 
@@ -216,6 +221,8 @@ $(document).on("click", "#visit-btn", handleVisitBtnClick);
 $(document).on("click", "#visit-close", closeVisit);
 
 $(document).on("click", "#close-update", closeUpdate);
+
+// $(document).on("click", ".close", closeModal);
 
 $(document).ready(function() {
   var APIKey = "166a433c57516f51dfab1f7edaed8413";
@@ -245,10 +252,10 @@ $(document).ready(function() {
       city.addClass("text-center");
       temp = $("#temp").text(Math.floor(response.main.temp) + "º" + " F");
       minTemp = $("#minTemp").text(
-        "Lowest: " + Math.floor(response.main.temp_min) + "º" + " F"
+        "Low: " + Math.floor(response.main.temp_min) + "º" + " F"
       );
       maxTemp = $("#maxTemp").text(
-        "Highest: " + Math.floor(response.main.temp_max) + "º" + " F"
+        "High: " + Math.floor(response.main.temp_max) + "º" + " F"
       );
       $("#icon").append(iconImg);
     });
