@@ -221,6 +221,7 @@ $(document).on("click", "#visit-btn", handleVisitBtnClick);
 $(document).on("click", "#visit-close", closeVisit);
 
 $(document).on("click", "#close-update", closeUpdate);
+$(document).on("click", ".close", closeUpdate);
 
 // $(document).on("click", ".close", closeModal);
 
