@@ -289,6 +289,33 @@ a.logo span {
   background-color: #ff9f43;
   color: white;
 }
+
+.edit-patient-button {
+  border: 1px solid #0abde3;
+  background: white;
+  box-shadow: 2px 4px 8px 0px rgba(46, 61, 73, 0.2);
+  color: #0abde3;
+  transition: all 0.25s ease-in;
+}
+
+.edit-patient-button:hover {
+  background-color: #0abde3;
+  color: white;
+}
+
+.delete-patient-button {
+  border: 1px solid #ee5253;
+  background: white;
+  box-shadow: 2px 4px 8px 0px rgba(46, 61, 73, 0.2);
+  color: #ee5253;
+  transition: all 0.25s ease-in;
+}
+
+.delete-patient-button:hover {
+  background-color: #ee5253;
+  color: white;
+}
+
 .calendar-month-header {
   color: white;
   background-color: #48dbfb !important;
@@ -311,5 +338,4 @@ a.logo span {
 .white-header h5 {
   font-size: 15px;
   font-weight: bold;
-
 }
