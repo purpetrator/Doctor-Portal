@@ -31,4 +31,6 @@ module.exports = function(app, passport) {
     }
     res.redirect("/");
   }
+
+  // app.get("/", isLoggedIn, authController.dashboard);
 };

@@ -71,7 +71,7 @@ var handleFormSubmit = function(event) {
   };
 
   if (!(patient.firstname && patient.lastname)) {
-    alert("You must enter a first and last name");
+    $("#inputAlert").modal("show");
     return;
   }
 
