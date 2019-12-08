@@ -1,3 +1,5 @@
+var Patient = require("./visit.js");
+
 module.exports = function(sequelize, DataTypes) {
   var Patient = sequelize.define("Patient", {
     lastname: {
@@ -93,6 +95,12 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: sequelize.literal("CURRENT_TIMESTAMP()")
     }
   });
+
+  Patient.associate = function(models) {
+    Patient.hasMany(models.Visit, {
+      onDelete: "cascade"
+    });
+  };
 
   return Patient;
 };
