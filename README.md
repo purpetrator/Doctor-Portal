@@ -71,7 +71,7 @@ Doctors can view patients visits history by clicking the "View Visits" button.
 
 ## Authors:
 
-Ana Chernov - https://github.com/purpetrator
-Valentyna Abraimova - https://abraval.github.io/Main_portfolio
-Bailing Zhang - https://easonchang15530.github.io/Bootstrap-Portfolio
-Liam Wynne
+- Ana Chernov - https://github.com/purpetrator
+- Valentyna Abraimova - https://abraval.github.io/MainPortfolio
+- Bailing Zhang - https://easonchang15530.github.io/Bootstrap-Portfolio
+- Liam Wynne
