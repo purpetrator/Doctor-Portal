@@ -1,3 +1,5 @@
+var Patient = require("./patient.js");
+
 module.exports = function(sequelize, DataTypes) {
   var Visit = sequelize.define("Visit", {
     date: {
@@ -24,5 +26,15 @@ module.exports = function(sequelize, DataTypes) {
       defaultValue: sequelize.literal("CURRENT_TIMESTAMP()")
     }
   });
+
+  Visit.associate = function(models) {
+    Visit.belongsTo(models.Patient, {
+      foreignKey: {
+        model: Patient,
+        key: "id"
+      }
+    });
+  };
+
   return Visit;
 };
